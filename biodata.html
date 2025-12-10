@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bio-data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1 class="title">Bio-data</h1>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="resume.html">Resume</a>
+    <a href="biodata.html">Bio-data</a>
+</nav>
+<div id="biodata-box">
+    <h2>Loading Bio-data...</h2>
+</div>
+<script>
+$(document).ready(function(){
+    $.getJSON("data/biodata.json", function(data){
+        let html = `
+            <table>
+                <tr><td>Name</td><td>${data.name}</td></tr>
+                <tr><td>DOB</td><td>${data.dob}</td></tr>
+                <tr><td>Gender</td><td>${data.gender}</td></tr>
+                <tr><td>Nationality</td><td>${data.nationality}</td></tr>
+                <tr><td>Father</td><td>${data.father}</td></tr>
+                <tr><td>Mother</td><td>${data.mother}</td></tr>
+            </table>
+        `;
+        $("#biodata-box").html(html);
+    });
+});
+</script>
+</body>
+</html>
